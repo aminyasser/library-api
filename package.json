@@ -1,0 +1,20 @@
+{
+  "name": "library-api",
+  "version": "1.0.0",
+  "description": "library api for bosta backend assesment",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Amin Yasser",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "sequelize": "^6.33.0",
+    "sequelize-cli": "^6.6.1"
+  }
+}
