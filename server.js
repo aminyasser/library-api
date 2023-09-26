@@ -2,6 +2,8 @@
 const express = require('express');
 const client = require("./config/db.js");
 const routes = require("./routes/api.js");
+const models = require("./models/index.js");
+
 
 client.query('SELECT table_name FROM information_schema.tables;', (err, res) => {
   console.log("Test the db: ", res)
