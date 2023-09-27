@@ -9,20 +9,25 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      tile: {
-        type: Sequelize.STRING
+      title: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
-      auther: {
-        type: Sequelize.STRING
+      author: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       isbn: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       quantity: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       shelf_location: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
