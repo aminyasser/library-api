@@ -29,7 +29,8 @@ const BookBorrower = models.BookBorrower
                 });
                 
                 // TO-DO hande result
-                const result = await BookBorrower.findAll();
+                const result = await Borrower.findOne({where: { id: req.params.borrower_id,  }
+                     , include: Book });
 
                 return requestHandler.sendSuccess(res, 'checkout done successfuly')({ result });
              }
@@ -43,13 +44,12 @@ const BookBorrower = models.BookBorrower
         try {
             const book = await BookBorrower.findOne({ where: {  
                 borrower_id: req.params.borrower_id, 
-                book_id: req.params.book_id 
+                book_id: req.params.book_id ,
+                is_returned: null
              } });
            
             if (book == null) {
                 throw new Error("borrower didn't checkout this book"); 
-            } else if (book.is_returned !== null) {
-                throw new Error("borrower already returned this book"); 
             } else {
                
                 await BookBorrower.update({ 
