@@ -26,13 +26,10 @@ router.post('/borrowers', borrowerController.create);
 router.put('/borrowers/:id', borrowerController.update);
 router.delete('/borrowers/:id', borrowerController.destroy);
 
-
-
+// Borrowing Process
+router.get('/borrowers/:borrower_id/books', borrowingController.getBooks);
 router.post('/borrowers/:borrower_id/checkout/:book_id', borrowingController.checkoutBook);
 router.post('/borrowers/:borrower_id/return/:book_id', borrowingController.returnBook);
-
-
-
 
 
 

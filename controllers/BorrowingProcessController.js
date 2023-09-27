@@ -28,7 +28,6 @@ const BookBorrower = models.BookBorrower
                     end_date: req.body.end_date
                 });
                 
-                // TO-DO hande result
                 const result = await Borrower.findOne({where: { id: req.params.borrower_id,  }
                      , include: Book });
 
@@ -70,10 +69,27 @@ const BookBorrower = models.BookBorrower
     };
     
     const getBooks = async (req, res) => {
+        try {  
+            const borrower = await Borrower.findOne({ 
+                where: {id: req.params.borrower_id},
+                include: {
+                  model: Book,
+                  as: 'Books'
+                }
+              });
+              const books = borrower.Books
+              return requestHandler.sendSuccess(res, 'checkout done successfuly')({ books });
+             
+             
+        } catch (error) {
+            return requestHandler.sendError(req, res, error);
+        }
+          
     };
 
 
 module.exports = { 
     checkoutBook,
-    returnBook
+    returnBook,
+    getBooks
  }
