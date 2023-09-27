@@ -12,6 +12,8 @@ router.get('/', (req, res) => {
 });
 
 // Books
+router.get('/books/overdue', borrowingController.getOverdueBooks);
+
 router.get('/books', bookController.getAll);
 router.get('/books/:id', bookController.get);
 router.post('/books', bookController.create);
@@ -30,10 +32,6 @@ router.delete('/borrowers/:id', borrowerController.destroy);
 router.get('/borrowers/:borrower_id/books', borrowingController.getBooks);
 router.post('/borrowers/:borrower_id/checkout/:book_id', borrowingController.checkoutBook);
 router.post('/borrowers/:borrower_id/return/:book_id', borrowingController.returnBook);
-
-
-
-
 
 
 module.exports = router

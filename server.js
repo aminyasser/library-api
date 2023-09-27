@@ -1,8 +1,8 @@
 'use strict';
 const express = require('express');
 const client = require("./config/db.js");
-const routes = require("./routes/api.js");
 const models = require("./models/index.js");
+const routes = require("./routes/api.js");
 
 
 // Constants
