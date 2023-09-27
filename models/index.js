@@ -44,16 +44,7 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-// const Book_Borrower = db.sequelize.define('Book_Borrower', {
-//   startDate: DataTypes.DATE,
-//   endDate: DataTypes.DATE,
-// }, { timestamps: false });
-// const Book = require('./book.js')
-// const Borrower = require('./borrower.js')
 
-// Book.belongsToMany(Borrower, { through: Book_Borrower , 
-// foreignKey: "book_id"});
-// Borrower.belongsToMany(Book, { through: Book_Borrower , foreignKey: "borrower_id" });
 
 
 module.exports = db;
