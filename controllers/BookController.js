@@ -1,4 +1,5 @@
 const models = require('../models')
+const { Op } = require("sequelize");
 const Book = models.Book
 
     const getAll = async (req, res) => {
@@ -69,7 +70,27 @@ const Book = models.Book
             res.status(500).send(error.message);
         }
     };
+  
 
+    const search = async (req, res) => {
+        try {
+            // Get the owner of the report
+             
+             const books = await Book.findAll({
+                where: {
+                    [Op.or]: [
+                     {title: { [Op.like]:   req.params.query + '%' } },
+                     {author: { [Op.like]:  req.params.query + '%' }},
+                     {isbn: { [Op.like]:  req.params.query + '%' }},
+                    ]
+                  }
+              });
+            res.status(200).json({ status: "success" , books: books });
+        } catch (error) {
+            res.status(500).send(error.message);
+        }
+    };
+    
 
 
 
@@ -78,5 +99,6 @@ module.exports = {
     get,
     create,
     update,
-    destroy
+    destroy,
+    search
  }

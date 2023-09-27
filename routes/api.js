@@ -13,6 +13,8 @@ router.get('/books/:id', bookController.get);
 router.post('/books', bookController.create);
 router.put('/books/:id', bookController.update);
 router.delete('/books/:id', bookController.destroy);
+router.get('/books/search/:query', bookController.search);
+
 
 
 
