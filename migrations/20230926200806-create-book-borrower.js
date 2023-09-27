@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Book_Borrowers', {
+    await queryInterface.createTable('BookBorrowers', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -24,10 +24,16 @@ module.exports = {
         }
       },
       start_date: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       end_date: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
+      },
+      is_returned: {
+        type: Sequelize.BOOLEAN
+      },
+      return_date: {
+        type: Sequelize.DATEONLY
       },
       createdAt: {
         allowNull: false,
@@ -40,6 +46,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Book_Borrowers');
+    await queryInterface.dropTable('BookBorrowers');
   }
 };

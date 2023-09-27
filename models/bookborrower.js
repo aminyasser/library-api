@@ -17,8 +17,11 @@ module.exports = (sequelize, DataTypes) => {
   BookBorrower.init({
     book_id: DataTypes.INTEGER,
     borrower_id: DataTypes.INTEGER,
-    start_date: DataTypes.DATE,
-    end_date: DataTypes.DATE
+    start_date: DataTypes.DATEONLY,
+    end_date: DataTypes.DATEONLY,
+    is_returned: DataTypes.BOOLEAN,
+    return_date: DataTypes.DATEONLY,
+
   }, {
     sequelize, 
     modelName: 'BookBorrower',

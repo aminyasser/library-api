@@ -1,6 +1,8 @@
 const express = require('express');
 const bookController = require('../controllers/BookController')
 const borrowerController = require('../controllers/BorrowerController')
+const borrowingController = require('../controllers/BorrowingProcessController')
+
 
 // App
 
@@ -23,6 +25,13 @@ router.get('/borrowers/:id', borrowerController.get);
 router.post('/borrowers', borrowerController.create);
 router.put('/borrowers/:id', borrowerController.update);
 router.delete('/borrowers/:id', borrowerController.destroy);
+
+
+
+router.post('/borrowers/:borrower_id/checkout/:book_id', borrowingController.checkoutBook);
+router.post('/borrowers/:borrower_id/return/:book_id', borrowingController.returnBook);
+
+
 
 
 
