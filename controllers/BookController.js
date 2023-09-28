@@ -19,7 +19,7 @@ const Book = models.Book
             
             const book = await Book.findOne({ where: { id: req.params.id } });
             
-            return requestHandler.sendSuccess(res, 'book fetched successfully')({ borrower });
+            return requestHandler.sendSuccess(res, 'book fetched successfully')({ book });
         } catch (error) {
             return requestHandler.sendError(req, res, error);
         }
