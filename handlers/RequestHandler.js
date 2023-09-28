@@ -9,9 +9,9 @@ class RequestHandler {
         };
     }
 
-    sendError(req, res, error) {
+    sendError(req, res, error , msg = 'Unhandled Error') {
         return res.status(error.status || 500).json({
-            type: 'error', message: error.message || error.message || 'Unhandled Error', error,
+            type: 'error', message: error.message || error.message || msg, error,
         });
     }
 

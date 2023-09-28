@@ -8,36 +8,18 @@ const { Op } = require('sequelize')
 
     const checkoutBook = async (req, res) => {
         try {
-                                  
-            const book = await BookBorrower.findOne({ where: {  
-                borrower_id: req.params.borrower_id, 
-                book_id: req.params.book_id ,
-                is_returned: null
-             } });
-
-             const bookExists = await BookBorrower.findOne({ where: {  
-                book_id: req.params.book_id ,
-                is_returned: null
-             } });
-
-             if (book != null) {
-                throw new Error("borrower already have this book"); 
-             } else if (bookExists != null){
-                throw new Error(`book is already borrowed, expect to return at ${bookExists.end_date}`); 
-             }else {
-                // TO-DO validate end_date must be after start_date
-                 await BookBorrower.create({ 
-                    borrower_id: req.params.borrower_id, 
-                    book_id: req.params.book_id , 
-                    start_date: Date.now() ,
-                    end_date: req.body.end_date
-                });
+                                 
+            await BookBorrower.create({ 
+            borrower_id: req.params.borrower_id, 
+            book_id: req.params.book_id , 
+            start_date: Date.now() ,
+            end_date: req.body.end_date
+            });
                 
-                const result = await Borrower.findOne({where: { id: req.params.borrower_id,  }
-                     , include: { model: Book , where: {id:req.params.book_id , } } });
+            const result = await Borrower.findOne({where: { id: req.params.borrower_id,  }
+                    , include: { model: Book , where: {id:req.params.book_id , } } });
 
-                return requestHandler.sendSuccess(res, 'borrower checkout the book successfuly')({ result });
-             }
+            return requestHandler.sendSuccess(res, 'borrower checkout the book successfuly')({ result });
              
         } catch (error) {
             return requestHandler.sendError(req, res, error);
@@ -46,28 +28,18 @@ const { Op } = require('sequelize')
 
     const returnBook = async (req, res) => {
         try {
-            const book = await BookBorrower.findOne({ where: {  
-                borrower_id: req.params.borrower_id, 
-                book_id: req.params.book_id ,
-                is_returned: null
-             } });
-           
-            if (book == null) {
-                throw new Error("borrower didn't checkout this book"); 
-            } else {
-               
-                await BookBorrower.update({ 
-                    is_returned: true ,
-                    return_date: Date.now()
-                } , {
-                    where: {
-                       borrower_id: req.params.borrower_id, 
-                       book_id: req.params.book_id , 
-                    }
-                });
-                return requestHandler.sendSuccess(res, 'borrower return the book successfully')({  });
-            }
-           
+            
+            await BookBorrower.update({ 
+                is_returned: true ,
+                return_date: Date.now()
+            } , {
+                where: {
+                    borrower_id: req.params.borrower_id, 
+                    book_id: req.params.book_id , 
+                }
+            });
+            return requestHandler.sendSuccess(res, 'borrower return the book successfully')({  });
+        
         } catch (error) {
             return requestHandler.sendError(req, res, error);
         }
