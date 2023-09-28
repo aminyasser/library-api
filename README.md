@@ -9,7 +9,8 @@ You must have docker and docker-compose installed.
 docker-compose up
 ```
 ## Database Diagram
-<img  alt="Database" width="310" height="200"  src="diagram.png" draggable="false" />
+<img  alt="Database"   src="diagram.png" draggable="false" />
+
 ## API Documentation
 
 ### Requests
