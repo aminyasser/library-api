@@ -24,7 +24,9 @@ services:
     build: .
     depends_on:
       # Our migration does not work without appt
-      - app    
+      - app  
+      - postgres 
+    restart: on-failure    
     command: sh -c "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   # This is the configuration for our PostgreSQL database container
   # Note the `postgres` name is important, in out Node app when we refer
