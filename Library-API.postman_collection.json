@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "5f5162d9-db85-498c-9697-6761c069c11a",
+		"name": "Library-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19528493"
+	},
+	"item": [
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {  },
+			            "url": "http://0.0.0.0:8080/api/books"
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://0.0.0.0:8080/api/books/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": { 
+							"mode": "raw",
+				            "raw": "{\"title\":\"Design\",\"isbn\":\"978-0-9747736-5-5\",\"author\":\"UncleBob\",\"quantity\":1,\"shelf_location\":\"B1\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						 },
+			            "url": "http://0.0.0.0:8080/api/books"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": { 
+							"mode": "raw",
+				            "raw": "{\"title\":\"Design\",\"isbn\":\"978-0-9747736-5-5\",\"author\":\"UncleBob\",\"quantity\":1,\"shelf_location\":\"B1\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						 },
+			            "url": "http://0.0.0.0:8080/api/books/4"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+			            "url": "http://0.0.0.0:8080/api/books/4"
+					},
+					"response": []
+				},
+				{
+					"name": "Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {  },
+			            "url": "http://0.0.0.0:8080/api/books/search/Ami"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Borrowers",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://0.0.0.0:8080/api/borrowers"
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://0.0.0.0:8080/api/borrowers/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": { 
+							"mode": "raw",
+				            "raw": "{\"name\":\"7ouda\",\"email\":\"7oda@test.com\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						 },
+			            "url": "http://0.0.0.0:8080/api/books"
+					},
+					
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": { 
+							"mode": "raw",
+				            "raw": "{\"name\":\"7oudaaa\",\"email\":\"7oda@test.com\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						 },
+			            "url": "http://0.0.0.0:8080/api/books/4"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+			            "url": "http://0.0.0.0:8080/api/books/4"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Borrowing Process",
+			"item": [
+				{
+					"name": "getBorrowerBooks",
+					"request": {
+						"method": "GET",
+						"header": [],
+			            "url": "http://0.0.0.0:8080/api/borrowers/1/books"
+					},
+					"response": []
+				},
+				{
+					"name": "Checkout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": { 
+							"mode": "raw",
+				            "raw": "{\"end_date\":\"2023-10-10\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						 },
+			            "url": "http://0.0.0.0:8080/api/borrowers/1/checkout/4"
+					},
+					"response": []
+				},
+				{
+					"name": "Return",
+					"request": {
+						"method": "POST",
+						"header": [],
+			            "url": "http://0.0.0.0:8080/api/borrowers/1/return/4",
+						"options": {
+							"raw": {
+								"language": "json"
+							}
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "Report Overdue",
+					"request": {
+						"method": "GET",
+						"header": [],
+			            "url": "http://0.0.0.0:8080/api/books/overdue"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -27,7 +27,7 @@ const { Op } = require('sequelize')
                 });
                 
                 const result = await Borrower.findOne({where: { id: req.params.borrower_id,  }
-                     , include: Book });
+                     , include: { model: Book , where: {id:req.params.book_id , } } });
 
                 return requestHandler.sendSuccess(res, 'borrower checkout the book successfuly')({ result });
              }

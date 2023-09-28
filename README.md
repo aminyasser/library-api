@@ -13,6 +13,9 @@ docker-compose up
 
 ## API Documentation
 
+You can check out the docs from ([Here 🚀](https://documenter.getpostman.com/view/19528493/2s9YJZ458y)
+Or import this ([Postman Collection](https://github.com/aminyasser/library-api/blob/main/Library-API.postman_collection.json) to try locally.
+
 ### Requests
 Books endpoints
 ```http
@@ -66,7 +69,7 @@ In case of error
 }
 ```
 
-### Example
+### Example Result
 Example of search endpoint
 ```http
 GET    /api/books/search/Ami
