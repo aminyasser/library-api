@@ -14,34 +14,34 @@ docker-compose up
 ### Requests
 Books endpoints
 ```http
-GET    {HOST}/api/books
-GET    {HOST}/api/books/:id
-GET    {HOST}/api/books/search:query
-POST   {HOST}/api/books
-PUT    {HOST}/api/books/:id
-DELETE {HOST}/api/books/:id
+GET    /api/books
+GET    /api/books/:id
+GET    /api/books/search:query
+POST   /api/books
+PUT    /api/books/:id
+DELETE /api/books/:id
 ```
 
 Borrowers endpoints
 ```http
-GET    {HOST}/api/borrowers
-GET    {HOST}/api/borrowers/:id
-POST   {HOST}/api/borrowers
-PUT    {HOST}/api/borrowers/:id
-DELETE {HOST}/api/borrowers/:id
+GET    /api/borrowers
+GET    /api/borrowers/:id
+POST   /api/borrowers
+PUT    /api/borrowers/:id
+DELETE /api/borrowers/:id
 ```
 
 Borrowing Process endpointes
 
 ```http
-GET    {HOST}/api/borrowers/:borrower_id/books
-POST   {HOST}/api/borrowers/:borrower_id/checkout/:book_id
-POST   {HOST}/api/borrowers/:borrower_id/return/:book_id
+GET    /api/borrowers/:borrower_id/books
+POST   /api/borrowers/:borrower_id/checkout/:book_id
+POST   /api/borrowers/:borrower_id/return/:book_id
 ```
 
 System Reports
 ```http
-GET  {HOST}/api/books/overdue
+GET  /api/books/overdue
 ```
 
 ### Responses
@@ -67,7 +67,7 @@ In case of error
 ### Example
 Example of success
 ```http
-GET    {HOST}/api/books/search/Ami
+GET    /api/books/search/Ami
 ```
 ```javascript
 {
