@@ -59,7 +59,7 @@ const Book = models.Book
                 }
             }) ;
         
-            return requestHandler.sendSuccess(res, 'book updated successfuly')({ book });
+            return requestHandler.sendSuccess(res, 'book updated successfuly')({  });
 
         } catch (error) {
             return requestHandler.sendError(req, res, error);
@@ -71,7 +71,7 @@ const Book = models.Book
           
             const book = await Book.destroy({ where: { id: req.params.id } });
             
-            return requestHandler.sendSuccess(res, 'book deleted successfuly')({ book });            
+            return requestHandler.sendSuccess(res, 'book deleted successfuly')({  });            
         } catch (error) {
             return requestHandler.sendError(req, res, error);
         }

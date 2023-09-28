@@ -29,7 +29,7 @@ const { Op } = require('sequelize')
                 const result = await Borrower.findOne({where: { id: req.params.borrower_id,  }
                      , include: Book });
 
-                return requestHandler.sendSuccess(res, 'checkout done successfuly')({ result });
+                return requestHandler.sendSuccess(res, 'borrower checkout the book successfuly')({ result });
              }
              
         } catch (error) {
@@ -76,7 +76,7 @@ const { Op } = require('sequelize')
                 }
               });
               const books = borrower.Books
-              return requestHandler.sendSuccess(res, 'borrower checkout the book successfuly')({ books });
+              return requestHandler.sendSuccess(res, 'borrower books fetched successfuly')({ books });
              
              
         } catch (error) {
