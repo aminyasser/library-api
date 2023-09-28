@@ -15,9 +15,16 @@ const { Op } = require('sequelize')
                 is_returned: null
              } });
 
+             const bookExists = await BookBorrower.findOne({ where: {  
+                book_id: req.params.book_id ,
+                is_returned: null
+             } });
+
              if (book != null) {
                 throw new Error("borrower already have this book"); 
-             } else {
+             } else if (bookExists != null){
+                throw new Error(`book is already borrowed, expect to return at ${bookExists.end_date}`); 
+             }else {
                 // TO-DO validate end_date must be after start_date
                  await BookBorrower.create({ 
                     borrower_id: req.params.borrower_id, 
@@ -68,15 +75,22 @@ const { Op } = require('sequelize')
     
     const getBooks = async (req, res) => {
         try {  
-            const borrower = await Borrower.findOne({ 
-                where: {id: req.params.borrower_id},
-                include: {
-                  model: Book,
-                  as: 'Books'
-                }
-              });
-              const books = borrower.Books
-              return requestHandler.sendSuccess(res, 'borrower books fetched successfuly')({ books });
+            
+              const borrowerBooksIds =  await BookBorrower.findAll({
+                attributes: ['book_id'],
+                where: { borrower_id: req.params.borrower_id  ,is_returned: null }
+                });
+       
+               const booksIds = borrowerBooksIds.map((data) => {
+                    return data.book_id
+                })
+    
+                const books = await Book.findAll({
+                    where: {id: { [Op.in]: booksIds}   }
+                });
+
+              
+              return requestHandler.sendSuccess(res, 'current borrower books fetched successfuly')({ books });
              
              
         } catch (error) {
