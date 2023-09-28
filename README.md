@@ -1,20 +1,37 @@
-# Library API
-Library API for **_Bosta_** Backend Engineer Assesment made with Nodejs,Postgres
+# Library API [API Documentation 🚀](https://documenter.getpostman.com/view/19528493/2s9YJZ458y)
+Library API for **_Bosta_** Backend Engineer Assesment made with Nodejs,Postgres.
 
 ## Running The API 
 
+Clone the project
+
+```bash
+git clone https://github.com/aminyasser/library-api.git
+cd library-api
+```
 You must have docker and docker-compose installed.
 
 ```bash
-docker-compose up
+docker-compose build
 ```
+**Note**  : for simplicity there is migration service at ``docker-compose.yml`` that migrate to the database and seed the data to the database, you can enable it at the first time by add ``--profile`` flag.
+
+```bash
+ docker-compose --profile migrate-and-seed up 
+```
+
+If you run it again, you can normally do the command without it.
+```bash
+ docker-compose up 
+```
+
 ## Database Diagram
 <img  alt="Database"   src="diagram.png" draggable="false" />
 
 ## API Documentation
 
-You can check out the docs from ([Here 🚀](https://documenter.getpostman.com/view/19528493/2s9YJZ458y)
-Or import this ([Postman Collection](https://github.com/aminyasser/library-api/blob/main/Library-API.postman_collection.json) to try locally.
+You can check out the postman documentation from [Here 🚀](https://documenter.getpostman.com/view/19528493/2s9YJZ458y)
+Or import this [Postman Collection](https://github.com/aminyasser/library-api/blob/main/Library-API.postman_collection.json) to try locally.
 
 ### Requests
 Books endpoints

@@ -18,7 +18,14 @@ services:
       # node_modules workaround for volumes
       # https://stackoverflow.com/a/32785014
       - /usr/src/app/node_modules
-
+      
+  migration:
+    profiles: ["migrate-and-seed"]
+    build: .
+    depends_on:
+      # Our migration does not work without appt
+      - app    
+    command: sh -c "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   # This is the configuration for our PostgreSQL database container
   # Note the `postgres` name is important, in out Node app when we refer
   # to  `host: "postgres"` that value is mapped on the network to the 
