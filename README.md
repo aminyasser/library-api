@@ -17,7 +17,7 @@ docker-compose build
 **Note**  : for simplicity there is migration service at ``docker-compose.yml`` that migrate to the database and seed the data to the database, you can enable it at the first time by add ``--profile`` flag.
 
 ```bash
- docker-compose --profile migrate-and-seed up 
+ docker-compose --profile migrate-and-seed up --build
 ```
 
 If you run it again, you can normally do the command without it.
