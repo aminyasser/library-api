@@ -6,7 +6,6 @@ const Book = models.Book
 
     const getAll = async (req, res) => {
         try {
-            // TO-DO validate first
             const books = await Book.findAll();
             return requestHandler.sendSuccess(res, 'books fetched successfully')({ books });
         } catch (error) {
@@ -16,7 +15,6 @@ const Book = models.Book
 
     const get = async (req, res) => {
         try {
-            
             const book = await Book.findOne({ where: { id: req.params.id } });
             
             return requestHandler.sendSuccess(res, 'book fetched successfully')({ book });
@@ -28,7 +26,6 @@ const Book = models.Book
     const create = async (req, res) => {
         try {
            
-            console.log(req.body);
             const book = await Book.create({ 
                 title: req.body.title, 
                 author: req.body.author, 
@@ -37,7 +34,6 @@ const Book = models.Book
                 shelf_location: req.body.shelf_location, 
               });
 
-            
             return requestHandler.sendSuccess(res, 'book created successfully')({ book });
 
         } catch (error) {
@@ -47,7 +43,7 @@ const Book = models.Book
 
     const update = async (req, res) => {
         try {
-           
+
             const book = await Book.update({  
                 title: req.body.title, 
                 author: req.body.author, 

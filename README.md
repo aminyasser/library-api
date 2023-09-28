@@ -1,4 +1,4 @@
-# Library API [API Documentation 🚀](https://documenter.getpostman.com/view/19528493/2s9YJZ458y)
+# Library API [(API Documentation 🚀)](https://documenter.getpostman.com/view/19528493/2s9YJZ458y)
 Library API for **_Bosta_** Backend Engineer Assesment made with Nodejs,Postgres.
 
 ## Running The API 
@@ -25,6 +25,43 @@ If you run it again, you can normally do the command without it.
  docker-compose up 
 ```
 
+## Structure
+It's my first time using Nodejs, so I was confused about what structure I should go with.
+I was planning to separate the folders more like doing Repository Pattern but i keep it like that for simplicity.
+
+```
+├── config
+│   ├── config.json
+│   └── db.js
+├── controllers
+│   ├── BookController.js
+│   ├── BorrowerController.js
+│   └── BorrowingProcessController.js
+├── handlers
+│   ├── RequestHandler.js
+│   └── validatorHandler.js
+├── middlewares
+│   └── validationMiddleware.js
+├── migrations
+│   ├── 20230926184238-create-user.js
+│   ├── 20230926184550-create-book.js
+│   ├── 20230926184728-create-borrower.js
+│   └── 20230926200806-create-book-borrower.js
+├── models
+│   ├── bookborrower.js
+│   ├── book.js
+│   ├── borrower.js
+│   ├── index.js
+│   └── user.js
+├── routes
+│   └── api.js
+├── seeders
+│   ├── 20230928041857-demo-book.js
+│   ├── 20230928041915-demo-borrower.js
+│   └── 20230928041926-demo-book-borrower.js
+└── server.js
+
+```
 ## Database Diagram
 <img  alt="Database"   src="diagram.png" draggable="false" />
 
