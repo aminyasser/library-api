@@ -8,7 +8,8 @@ You must have docker and docker-compose installed.
 ```bash
 docker-compose up
 ```
-
+## Database Diagram
+<img  alt="Database" width="310" height="200"  src="diagram.png" draggable="false" />
 ## API Documentation
 
 ### Requests
@@ -65,10 +66,11 @@ In case of error
 ```
 
 ### Example
-Example of success
+Example of search endpoint
 ```http
 GET    /api/books/search/Ami
 ```
+Example response
 ```javascript
 {
     {
